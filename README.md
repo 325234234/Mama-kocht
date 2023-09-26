@@ -1,0 +1,1 @@
+A small page that loads a random recipe from the Spoonacular recipe DB and translates it into German via Google Cloud Translation, or loads a recipe from a Google Firebase DB while also allowing the user to store new recipes in the same DB.

@@ -1,0 +1,106 @@
+/* General setup */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Typology */
+
+#root,
+button {
+    font-family: 'Noto Serif Sinhala', serif;
+}
+
+/* Layout */
+
+#root {
+  min-height: 100vh;
+
+  background-color: #1E212B;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  height: 100%;
+  flex-grow: 1;
+  
+  background-color: #31343d;
+}
+
+/* Header */
+
+header {    
+  background: url("./assets/background.jpg") center center no-repeat; 
+  background-size: cover; 
+
+  height: 30vh;
+  min-height: 150px;
+  width: 100%;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Main */
+
+main {
+  width: 100vw;
+  max-width: 100%;
+
+  padding: .75em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75em;
+}
+
+.section--buttons {
+  width: 100%;
+
+  display: flex;
+  gap: .75em;
+}
+
+button {
+  width: 50%;
+  
+  padding: 0.5em;  
+
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(235, 235, 235);
+
+  border-width: 0;   
+  border-radius: 5px;
+  
+  cursor: pointer;
+}
+
+.button--web {
+  background: #d6570d;
+}
+
+.button--mom {
+  background: #078013;
+}
+
+button:hover {
+  filter: brightness(110%)
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Recipes */
+
+.section--recipes {
+  width: 100%;
+}

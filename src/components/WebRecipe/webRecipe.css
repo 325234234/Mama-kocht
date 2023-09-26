@@ -1,0 +1,26 @@
+.webRecipe {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #D3D4D9;
+  background-color:#282c38;
+
+  border-radius: 10px;
+  border-bottom: 5px solid #d6570d;
+
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+
+  object-fit: cover;
+  background-color: #282c38;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

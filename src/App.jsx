@@ -6,8 +6,20 @@ export default function App() {
 
   const [showWeb, setShowWeb] = useState(true)
 
-  function fetchWebRecipe() {
-    setShowWeb(true)
+  async function fetchWebRecipe() {
+    try {      
+      setShowWeb(true)
+
+      const serverFunction = "https://muttikocht.netlify.app/.netlify/functions/fetchWebRecipe"
+      const response = await fetch(serverFunction)        
+      const data = await response.json()
+
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log("done")
+    }
   }
   
   function fetchMomRecipe() {

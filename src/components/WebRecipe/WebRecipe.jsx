@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import "./webRecipe.css"
 import placeholder from "../../assets/mom-placeholder.jpg"
 
 export default function WebRecipe({image, title, ingredients}) {
-
-  
+ 
 
   return (
     <section className="webRecipe">

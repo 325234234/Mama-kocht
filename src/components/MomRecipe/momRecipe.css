@@ -1,0 +1,39 @@
+.momRecipe {
+  width: 100%;
+
+  color: #D3D4D9;
+  background-color:#282c38;
+
+  border-radius: 10px;
+  border-bottom: 5px solid #078013;
+}
+
+.mom--image {
+  width: 100%;
+  height: 200px;
+
+  object-fit: cover;
+  background-color: #282c38;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 5px;  
+}
+
+.mom--heading {
+  padding: .2em 0 .3em;
+
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.momAddRecipe {
+  padding: .75em 0;
+  
+  display: flex;
+  gap: .75em;
+}
+
+.momAddRecipe--button {
+  font-size: 1rem;
+}

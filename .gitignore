@@ -22,7 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#api keys
 env.js
+.env
 
 # Local Netlify folder
 .netlify

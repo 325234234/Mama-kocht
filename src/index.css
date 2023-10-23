@@ -30,13 +30,16 @@ button {
   height: 100%;
   flex-grow: 1;
   
+  display: flex;
+  flex-direction: column;
+
   background-color: #31343d;
 }
 
 /* Header */
 
 header {    
-  background: url("./assets/background.jpg") center center no-repeat; 
+  background: url("./assets/background.png") center center no-repeat; 
   background-size: cover; 
 
   height: 30vh;
@@ -52,6 +55,7 @@ header {
 main {
   width: 100vw;
   max-width: 100%;
+  flex: 1 1 150px;
 
   padding: .75em;
 
@@ -101,6 +105,14 @@ button:active {
 
 /* Recipes */
 
+.loader {
+  margin: 15vh auto;
+}
+
 .section--recipes {
   width: 100%;
+  height: 100%;
+  
+  display: flex;
+  flex-direction: column;
 }

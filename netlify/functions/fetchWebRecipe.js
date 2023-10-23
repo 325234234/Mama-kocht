@@ -5,7 +5,7 @@ const handler = async () => {
     const SETTINGS_RECIPE = "number=1&tags=lunch"
 
     // eslint-disable-next-line no-undef
-    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.VITE_API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
+    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
     console.log("Fetch Web Recipe Response: " + JSON.stringify(response))
 
     if(!response.ok) {

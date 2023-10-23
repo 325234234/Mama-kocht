@@ -5,7 +5,9 @@ const handler = async () => {
     const SETTINGS_RECIPE = "number=1&tags=lunch"
 
     // eslint-disable-next-line no-undef
-    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.VITE_API_KEY_RECIPE}&${SETTINGS_RECIPE}`)    
+    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.VITE_API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
+    console.log("Fetch Web Recipe Response: " + JSON.stringify(response))
+
     if(!response.ok) {
       throw {
         message: "Spooncaular API didn't cooperate.", 
@@ -15,6 +17,8 @@ const handler = async () => {
     }
     
     const data = await response.json()
+    console.log("Fetch Web Recipe Data: " + JSON.stringify(data))
+
     return {
       statusCode: 200,
       body: JSON.stringify(data)

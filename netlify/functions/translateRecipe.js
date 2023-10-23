@@ -6,6 +6,7 @@ const handler = async (event) => {
 
     // eslint-disable-next-line no-undef
     const response = await fetch(`${ENDPOINT_TRANSLATION}?key=${process.env.VITE_API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`)
+    console.log("Fetch Translation Response: " + JSON.stringify(response))
     if(!response.ok) {
       throw {
         message: "Google Cloud Translate API didn't cooperate.", 
@@ -15,6 +16,7 @@ const handler = async (event) => {
     }
     
     const data = await response.json()   
+    console.log("Fetch Translation Data: " + JSON.stringify(data))
     return {
       statusCode: 200,
       body: JSON.stringify(data.data.translations[0].translatedText)

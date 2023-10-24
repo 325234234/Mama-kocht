@@ -55,7 +55,7 @@ export default function App() {
         // store recipe object in state after translating it
         setWebRecipe(
           { 
-            image: recipeData.recipes[0].image,
+            image: `${recipeData.recipes[0].image}`,
             title: await fetchTranslation(recipeData.recipes[0].title),
             ingredients: await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(",")),
             instructions: await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step))),

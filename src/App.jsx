@@ -45,9 +45,9 @@ export default function App() {
   async function fetchWebRecipe() {
     try {            
         setLoading(true)
-
+        
         const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/fetchWebRecipe")  
-        // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${VITE_API_KEY_RECIPE}&number=1&tags=lunch`)
+        // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY_RECIPE}&number=1&tags=lunch`)
         const recipeData = await response.json()
 
         // store recipe object in state after translating it
@@ -80,7 +80,7 @@ export default function App() {
                       },
                       body: string
                     })
-    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${VITE_API_KEY_TRANSLATION}&source=en&target=de&format=text&q=${string}`)
+    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${API_KEY_TRANSLATION}&source=en&target=de&format=text&q=${string}`)
     const data = await response.json()
     return data.data.translations[0].translatedText
   }

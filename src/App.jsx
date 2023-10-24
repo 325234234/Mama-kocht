@@ -77,9 +77,6 @@ export default function App() {
 
     const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/translateRecipe", {
                       method: 'POST',
-                      headers: {
-                        'content-type': 'text/plain',
-                      },
                       body: string
                     })
     console.log(response)

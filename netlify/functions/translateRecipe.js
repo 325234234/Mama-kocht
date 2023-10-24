@@ -19,11 +19,13 @@ const handler = async (event) => {
     
     return {
       statusCode: 200,
-      body: JSON.stringify(data.data.translations[0].translatedText)
+      // body: JSON.stringify(data.data.translations[0].translatedText)
+      body: JSON.stringify(data)
     }
 
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    console.error("Error occurred:", error)
+    return { statusCode: 500, body: JSON.stringify(error, Object.getOwnPropertyNames(error)) }
   }
 }
 

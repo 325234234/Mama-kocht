@@ -47,30 +47,30 @@ export default function App() {
         setLoading(true)
         
         const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/fetchWebRecipe")
-        // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY_RECIPE}&number=1&tags=lunch`)
+        // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=&number=1&tags=lunch`)
         const recipeData = await response.json()
 
         // store recipe object in state after translating it
-        // setWebRecipe(
-        //   { 
-        //     image: recipeData.recipes[0].image,
-        //     title: await fetchTranslation(recipeData.recipes[0].title),
-        //     ingredients: await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(",")),
-        //     instructions: await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step))),
-        //     url: recipeData.recipes[0].sourceUrl
-        //   }
-        // )
+        setWebRecipe(
+          { 
+            image: recipeData.recipes[0].image,
+            title: await fetchTranslation(recipeData.recipes[0].title),
+            ingredients: await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(",")),
+            instructions: await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step))),
+            url: recipeData.recipes[0].sourceUrl
+          }
+        )
         
-        const image = recipeData.recipes[0].image
-        console.log("Image: " + image)
-        const title = await fetchTranslation(recipeData.recipes[0].title)
-        console.log("Title: " + title)
-        const ingredients = await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(","))
-        console.log("Ingredients: " + ingredients)
-        const instructions = await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step)))
-        console.log("Instructions: " + instructions)
-        const url = recipeData.recipes[0].sourceUrl
-        console.log("URL: " + url)
+        // const image = recipeData.recipes[0].image
+        // console.log("Image: " + image)
+        // const title = await fetchTranslation(recipeData.recipes[0].title)
+        // console.log("Title: " + title)
+        // const ingredients = await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(","))
+        // console.log("Ingredients: " + ingredients)
+        // const instructions = await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step)))
+        // console.log("Instructions: " + instructions)
+        // const url = recipeData.recipes[0].sourceUrl
+        // console.log("URL: " + url)
       } catch (error) {
         console.log(error)
       } finally {
@@ -83,12 +83,17 @@ export default function App() {
 
   // returns a translated string using an asynchronous Google Cloud Translate API request
   async function fetchTranslation(string) {
+    const serverFunction = "https://muttikocht.netlify.app/.netlify/functions/translateRecipe"
+    const options = {
+        method: 'POST',
+        headers: {
+          'content-type': 'text/plain',
+        },
+        body: string
+    }
+    const response = await fetch(serverFunction, options)    
 
-    const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/translateRecipe", {
-                      method: 'POST',
-                      body: string
-                    })
-    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${API_KEY_TRANSLATION}&source=en&target=de&format=text&q=${string}`)
+    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=&source=en&target=de&format=text&q=${string}`)
     const data = await response.json()
 
     return data.data.translations[0].translatedText
@@ -112,7 +117,8 @@ export default function App() {
   function postMomRecipe(newRecipe) {
     // if the user entered a recipe and has the super secret PW in their local storage, he may write into the DB
     // eslint-disable-next-line no-undef
-    if(newRecipe && localStorage.getItem(process.env.SECRET_PASSWORD)) {
+    // if(newRecipe && localStorage.getItem(process.env.SECRET_PASSWORD)) {
+    if(newRecipe && localStorage.getItem("muttiRecipePW")) {
       // push new recipe into Firebase DB
       push(momRecipesRef.current, newRecipe)
 

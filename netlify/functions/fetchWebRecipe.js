@@ -23,7 +23,8 @@ const handler = async () => {
     }
 
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    console.error("Error occurred:", error)
+    return { statusCode: 500, body: JSON.stringify(error, Object.getOwnPropertyNames(error)) }
   }
 }
 

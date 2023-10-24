@@ -5,7 +5,7 @@ const handler = async (event) => {
     const SETTINGS_TRANSLATION = "source=en&target=de&format=text"
 
     // eslint-disable-next-line no-undef
-    console.log(`${ENDPOINT_TRANSLATION}?key=${process.env.API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`)
+    console.log(`${event.body}`)
     const response = await fetch(`${ENDPOINT_TRANSLATION}?key=${process.env.API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`)
     
     if(!response.ok) {

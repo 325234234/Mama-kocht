@@ -6,7 +6,6 @@ const handler = async () => {
 
     // eslint-disable-next-line no-undef
     const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
-    console.log("Fetch Web Recipe Response: " + JSON.stringify(response))
 
     if(!response.ok) {
       throw {
@@ -17,7 +16,6 @@ const handler = async () => {
     }
     
     const data = await response.json()
-    console.log("Fetch Web Recipe Data: " + JSON.stringify(data))
 
     return {
       statusCode: 200,

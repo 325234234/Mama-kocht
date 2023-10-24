@@ -64,10 +64,9 @@ export default function App() {
         // )
         setWebRecipe(
           { 
-            image: `${recipeData.recipes[0].image}`,
+            image: recipeData.recipes[0].image,
             title: recipeData.recipes[0].title,
             ingredients: recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(","),
-            instructions: recipeData.recipes[0].analyzedInstructions[0].steps,
             url: recipeData.recipes[0].sourceUrl
           }
         )

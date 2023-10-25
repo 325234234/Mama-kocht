@@ -15,14 +15,9 @@ const handler = async (event) => {
     }
     
     const data = await response.json()
-    console.log(JSON.stringify(data))
-    const translation = data.data.translations[0].translatedText
-    console.log("translation: " + translation)
-    const returnData = JSON.stringify(translation)
-    console.log("json translation: " + returnData)
     return {
       statusCode: 200,
-      body: returnData
+      body: JSON.stringify(data.data.translations[0].translatedText)
     }
 
   } catch (error) {

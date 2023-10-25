@@ -1,11 +1,11 @@
 const handler = async () => {
   try {
 
-    const ENDPOINT_RECIPE = "https://api.spoonacular.com/recipes/random"
-    const SETTINGS_RECIPE = "number=1&tags=lunch"
+    const ENDPOINT_RECIPE = "https://api.spoonacular.com/recipes/random";
+    const SETTINGS_RECIPE = "number=1&tags=lunch";
 
     // eslint-disable-next-line no-undef
-    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
+    const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.API_KEY_RECIPE}&${SETTINGS_RECIPE}`);
     if(!response.ok) {
       throw {
         message: "Spooncaular API didn't cooperate.", 
@@ -14,8 +14,7 @@ const handler = async () => {
       }
     }
     
-    const data = await response.json()
-    console.log("Web recipe data: " + JSON.stringify(data))
+    const data = await response.json();
     return {
       statusCode: 200,
       body: JSON.stringify(data)

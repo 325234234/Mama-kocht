@@ -6,7 +6,6 @@ const handler = async () => {
 
     // eslint-disable-next-line no-undef
     const response = await fetch(`${ENDPOINT_RECIPE}?apiKey=${process.env.API_KEY_RECIPE}&${SETTINGS_RECIPE}`)
-
     if(!response.ok) {
       throw {
         message: "Spooncaular API didn't cooperate.", 
@@ -16,7 +15,6 @@ const handler = async () => {
     }
     
     const data = await response.json()
-
     return {
       statusCode: 200,
       body: JSON.stringify(data)

@@ -4,15 +4,8 @@ const handler = async (event) => {
     const ENDPOINT_TRANSLATION = "https://translation.googleapis.com/language/translate/v2"
     const SETTINGS_TRANSLATION = "source=en&target=de&format=text"
 
-
-    const request = `${ENDPOINT_TRANSLATION}?key=${process.env.API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`
-
     // eslint-disable-next-line no-undef
-    console.log(request)
-    // const response = await fetch(`${ENDPOINT_TRANSLATION}?key=${process.env.API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`)
-    const response = await fetch(request)
-    console.log(response)
-
+    const response = await fetch(`${ENDPOINT_TRANSLATION}?key=${process.env.API_KEY_TRANSLATION}&${SETTINGS_TRANSLATION}&q=${event.body}`)
     if(!response.ok) {
       throw {
         message: "Google Cloud Translate API didn't cooperate.", 
@@ -21,13 +14,14 @@ const handler = async (event) => {
       }
     }
     
-    const data = await response.json()   
-    console.log(data.data.translations[0].translatedText)
-    console.log(JSON.stringify(data.data.translations[0].translatedText))
-
+    const data = await response.json()
+    const translation = data.data.translations[0].translatedText
+    console.log(translation)
+    const returnData = JSON.stringify(translation)
+    console.log(returnData)
     return {
       statusCode: 200,
-      body: JSON.stringify(data.data.translations[0].translatedText)
+      body: returnData
     }
 
   } catch (error) {

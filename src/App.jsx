@@ -81,10 +81,9 @@ export default function App() {
         },
         body: string
     };
-    const response = await fetch(serverFunction, options);
-    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=&source=en&target=de&format=text&q=${string}`)
-    
-    const data = await response.json();
+    const response = await fetch(serverFunction, options)
+    // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=&source=en&target=de&format=text&q=${string}`)    
+    const data = await response.json()
 
     return data
   }

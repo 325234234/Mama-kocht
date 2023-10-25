@@ -49,29 +49,18 @@ export default function App() {
         const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/fetchWebRecipe");
         // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=&number=1&tags=lunch`)
         const recipeData = await response.json();
-        console.log(JSON.stringify(recipeData))
 
         // store recipe object in state after translating it
-        // setWebRecipe(
-        //   { 
-        //     image: recipeData.recipes[0].image,
-        //     title: await fetchTranslation(recipeData.recipes[0].title),
-        //     ingredients: await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(",")),
-        //     instructions: await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step))),
-        //     url: recipeData.recipes[0].sourceUrl
-        //   }
-        // )
+        setWebRecipe(
+          { 
+            image: recipeData.recipes[0].image,
+            title: await fetchTranslation(recipeData.recipes[0].title),
+            ingredients: await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(",")),
+            instructions: await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step))),
+            url: recipeData.recipes[0].sourceUrl
+          }
+        )
         
-        const image = recipeData.recipes[0].image
-        console.log("Image: " + image)
-        const title = await fetchTranslation(recipeData.recipes[0].title)
-        console.log("Title: " + title)
-        const ingredients = await fetchTranslation(recipeData.recipes[0].extendedIngredients.map(ingr => ingr.nameClean).join(","))
-        console.log("Ingredients: " + ingredients)
-        const instructions = await Promise.all(recipeData.recipes[0].analyzedInstructions[0].steps.map(async step => await fetchTranslation(step.step)))
-        console.log("Instructions: " + instructions)
-        const url = recipeData.recipes[0].sourceUrl
-        console.log("URL: " + url)
       } catch (error) {
         console.log(error)
       } finally {
@@ -92,13 +81,11 @@ export default function App() {
         },
         body: string
     };
-    const response = await fetch(serverFunction, options); 
-
+    const response = await fetch(serverFunction, options);
     // const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=&source=en&target=de&format=text&q=${string}`)
+    
     const data = await response.json();
-    console.log("returned data from translation: " + data)
 
-    // return data.data.translations[0].translatedText
     return data
   }
   

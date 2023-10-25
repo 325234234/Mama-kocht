@@ -22,12 +22,12 @@ const handler = async (event) => {
     }
     
     const data = await response.json()   
-    console.log(data)
+    console.log(data.data.translations[0].translatedText)
+    console.log(JSON.stringify(data.data.translations[0].translatedText))
 
     return {
       statusCode: 200,
       body: JSON.stringify(data.data.translations[0].translatedText)
-      // body: JSON.stringify(data)
     }
 
   } catch (error) {

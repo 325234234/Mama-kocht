@@ -16,9 +16,9 @@ const handler = async (event) => {
     
     const data = await response.json()
     const translation = data.data.translations[0].translatedText
-    console.log(translation)
+    console.log("translation: " + translation)
     const returnData = JSON.stringify(translation)
-    console.log(returnData)
+    console.log("json translation: " + returnData)
     return {
       statusCode: 200,
       body: returnData

@@ -46,7 +46,7 @@ export default function App() {
     try {            
         setLoading(true)
         
-        const response = await fetch("https://muttikocht.netlify.app/.netlify/functions/fetchWebRecipe");
+        const response = await fetch("https://kochideen.netlify.app/.netlify/functions/fetchWebRecipe");
         // const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=&number=1&tags=lunch`)
         const recipeData = await response.json();
 
@@ -73,7 +73,7 @@ export default function App() {
 
   // returns a translated string using an asynchronous Google Cloud Translate API request
   async function fetchTranslation(string) {
-    const serverFunction = "https://muttikocht.netlify.app/.netlify/functions/translateRecipe";
+    const serverFunction = "https://kochideen.netlify.app/.netlify/functions/translateRecipe";
     const options = {
         method: 'POST',
         headers: {

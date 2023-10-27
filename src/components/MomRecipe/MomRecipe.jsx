@@ -10,11 +10,9 @@ export default function MomRecipe({ recipe, recipes, onSubmit }) {
 
   function handleSubmit() {
 
-    console.log("newRecipe = " + newRecipe + ", secretPassword = " + process.env.SECRET_PASSWORD)
-
     // a poor man's user validation
     // eslint-disable-next-line no-undef
-    if(newRecipe === process.env.SECRET_PASSWORD) {
+    if(newRecipe === "super1GEHEIM!") {
       localStorage.setItem("muttiRecipePW", newRecipe)
     } else {
       // push new recipe to database and display it

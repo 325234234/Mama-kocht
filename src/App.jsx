@@ -105,8 +105,6 @@ export default function App() {
 
   function postMomRecipe(newRecipe) {
     // if the user entered a recipe and has the super secret PW in their local storage, he may write into the DB
-    // eslint-disable-next-line no-undef
-    // if(newRecipe && localStorage.getItem(process.env.SECRET_PASSWORD)) {
     if(newRecipe && localStorage.getItem("muttiRecipePW")) {
       // push new recipe into Firebase DB
       push(momRecipesRef.current, newRecipe)

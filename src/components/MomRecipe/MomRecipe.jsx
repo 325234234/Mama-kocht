@@ -11,7 +11,6 @@ export default function MomRecipe({ recipe, recipes, onSubmit }) {
   function handleSubmit() {
 
     // a poor man's user validation
-    // eslint-disable-next-line no-undef
     if(newRecipe === "super1GEHEIM!") {
       localStorage.setItem("muttiRecipePW", newRecipe)
     } else {
